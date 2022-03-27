@@ -27,7 +27,7 @@ public class UpdateServlet extends HttpServlet {
         if(_token != null && _token.equals(request.getSession().getId())) {
             EntityManager em = DBUtil.createEntityManager();
 
-            Task t = em.find(Task.class, (Integer)(request.getSession().getAttribute("Task_id")));
+            Task t = em.find(Task.class, (Integer)(request.getSession().getAttribute("task_id")));
 
             String content = request.getParameter("content");
             t.setContent(content);
@@ -35,10 +35,9 @@ public class UpdateServlet extends HttpServlet {
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             t.setUpdated_at(currentTime);
 
-            // データベースを更新
+         // データベースを更新
             em.getTransaction().begin();
             em.getTransaction().commit();
-            request.getSession().setAttribute("flush", "更新が完了しました");
             em.close();
 
             // セッションスコープ上の不要になったデータを削除
@@ -48,5 +47,4 @@ public class UpdateServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/index");
         }
     }
-
 }

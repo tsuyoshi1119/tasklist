@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import models.Task;
 import utils.DBUtil;
 
-@WebServlet("/destory")
-public class DestoryServlet extends HttpServlet {
+@WebServlet("/destroy")
+public class DestroyServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public DestoryServlet() {
+    public DestroyServlet() {
         super();
     }
 
@@ -40,5 +41,4 @@ public class DestoryServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/index");
         }
     }
-
 }
